@@ -58,15 +58,7 @@ namespace AspNetMVC_Inlamningsuppgift_1.Models
         [StringLength(300, ErrorMessage = "{0} must be atleast {2} characters", MinimumLength = 2)]
         public string Country { get; set; } = string.Empty;
 
-
-        //[Display(Name = "Role")]
-        //[Required(ErrorMessage = "You need to enter a {0}")]
-        //[StringLength(100, ErrorMessage = "{0} must be atleast {2} characters", MinimumLength = 2)]
-        //public string PageRole { get; set; } = string.Empty;
-
         public string Response { get; set; } = "";
-
-        //public List<IdentityRole>? AllRoles { get; set; }
 
     }
 

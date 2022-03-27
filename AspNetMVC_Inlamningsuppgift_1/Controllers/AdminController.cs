@@ -142,12 +142,10 @@ namespace AspNetMVC_Inlamningsuppgift_1.Controllers
                     var roleId = await _context.UserRoles.FirstOrDefaultAsync(x => x.UserId == profileUser.UserId);
                     var role = await _context.Roles.FirstOrDefaultAsync(x => x.Id == roleId.RoleId);
 
-                    //profileView.AllRoles = await _context.Roles.ToListAsync();
 
                     return View(profileView);
                 }
 
-                //profileView.AllRoles = await _context.Roles.ToListAsync();
                 response.Response = "Something went wrong";
                 return View(profileView);
             }
@@ -159,19 +157,18 @@ namespace AspNetMVC_Inlamningsuppgift_1.Controllers
 
         [HttpPost]
         [Route("edit")]
-        public async Task<IActionResult> Edit(AdminEditViewModel model, string id)
+        public async Task<IActionResult> Edit(AdminEditViewModel model)
         {
 
             if (User.IsInRole("admin"))
             {
-                model.Id = id;
 
                 if (ModelState.IsValid)
                 {
 
 
                     // Kollar så ingen annan har emailen användaren angiver
-                    var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == id);
+                    var user = await _context.Users.FirstOrDefaultAsync(x => x.Id == model.Id);
                     var emailCheck = await _context.Users.FirstOrDefaultAsync(x => x.Email == model.Email);
                     if (emailCheck != null && emailCheck.Id != user.Id)
                     {
@@ -206,40 +203,29 @@ namespace AspNetMVC_Inlamningsuppgift_1.Controllers
 
                         _context.UserProfiles.Update(profileUser);
 
-
-
-                        //// Ändrar role
-                        //var newRoleId = await _context.Roles.FirstOrDefaultAsync(x => x.Name == model.PageRole);
-                        //var oldRoleId = await _context.UserRoles.FirstOrDefaultAsync(x => x.UserId == profileUser.UserId);
-
-                        //if (newRoleId.Id != oldRoleId.RoleId)
-                        //{
-                        //    oldRoleId.RoleId = newRoleId.Id;
-                        //    _context.UserRoles.Update(oldRoleId);
                     }
 
 
-                        try
-                        {
-                            await _context.SaveChangesAsync();
-                            model.Response = "Saved successfully";
-                            return View(model);
-                        }
-                        catch (Exception)
-                        {
-                            model.Response = "Something went wrong";
-                            return View(model);
+                    try
+                    {
+                        await _context.SaveChangesAsync();
+                        model.Response = "Saved successfully";
+                        return View(model);
+                    }
+                    catch (Exception)
+                    {
+                        model.Response = "Something went wrong";
+                        return View(model);
 
-                        }
-                        
+                    }
+
+
                 }
-            
-            
-                model.Response = "Something went wrong";
-                return View(model);
-            
-            }
 
+                model.Response = "Form is not correct";
+                return View(model);
+
+            }
                 
             return RedirectToAction("Index", "Home");
 
