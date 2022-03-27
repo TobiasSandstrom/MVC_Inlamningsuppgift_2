@@ -1,0 +1,87 @@
+﻿@model AspNetMVC_Inlamningsuppgift_2.Models.UserProfileModel
+
+@{
+    ViewData["Title"] = "EditProfile";
+}
+<section id="header-background">
+    <div class="container">
+        <!-- Navbar Section-->
+        <partial name="_NavbarPartial" />
+
+        <section id="profileEdit">
+            <div id="profileEdit-Header" class="text-center">
+                <h1>Edit Profile</h1>
+                <h5>Enter the information below to edit your profile</h5>
+                <hr />
+            </div>
+
+
+            <div class="row justify-content-center">
+                <div class="col-7">
+                    <form asp-action="EditProfile">
+                        <div class="row g-3 justify-content-center">
+
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <div class="form-group col-6">
+                                <label asp-for="FirstName" class="control-label"></label>
+                                <input asp-for="FirstName" class="form-control" />
+                                <span asp-validation-for="FirstName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-6">
+                                <label asp-for="LastName" class="control-label"></label>
+                                <input asp-for="LastName" class="form-control" />
+                                <span asp-validation-for="LastName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-12">
+                                <label asp-for="Email" class="control-label"></label>
+                                <input asp-for="Email" class="form-control" />
+                                <span asp-validation-for="Email" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-12">
+                                <label asp-for="Street" class="control-label"></label>
+                                <input asp-for="Street" class="form-control" />
+                                <span asp-validation-for="Street" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-4">
+                                <label asp-for="Zipcode" class="control-label"></label>
+                                <input asp-for="Zipcode" class="form-control" />
+                                <span asp-validation-for="Zipcode" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-8">
+                                <label asp-for="City" class="control-label"></label>
+                                <input asp-for="City" class="form-control" />
+                                <span asp-validation-for="City" class="text-danger"></span>
+                            </div>
+                            <div class="form-group col-12">
+                                <label asp-for="Country" class="control-label"></label>
+                                <input asp-for="Country" class="form-control" />
+                                <span asp-validation-for="Country" class="text-danger"></span>
+                            </div>
+
+                            <small class="text-success">@Model.SuccessMessage</small>
+                            <small class="text-error">@Model.ErrorMessage</small>
+
+                            <div class="form-group col-12 text-center">
+                                <input type="submit" value="Save Changes" class="btn btn-primary col-10" />
+                            </div>
+                            <div class="text-center mb-5">
+                                <a asp-controller="Profile" asp-action="Index" asp-route-id="@User.FindFirst("UserId").Value">Back to Profile</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+
+    </div>
+</section>
+
+<partial name="_FooterPartial" />
+
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

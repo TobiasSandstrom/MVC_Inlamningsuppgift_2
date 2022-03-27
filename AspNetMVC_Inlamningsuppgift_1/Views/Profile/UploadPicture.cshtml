@@ -1,0 +1,68 @@
+﻿@model AspNetMVC_Inlamningsuppgift_2.Models.AssignProfilePictureModel
+
+@{
+    ViewData["Title"] = "UploadPicture";
+}
+
+
+<section id="header-background">
+    <div class="container">
+        <!-- Navbar Section-->
+        <partial name="_NavbarPartial" />
+
+
+        <section id="profileEdit">
+            <div id="profileEdit-Header" class="text-center">
+                <h1>Upload Picture</h1>
+                <h5>Choose a picture below to upload it to your profile</h5>
+                <hr />
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-7">
+                    <form asp-action="UploadPicture" enctype="multipart/form-data">
+
+                        <div class="row g-3 justify-content-center">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                            <div class="mb-3 col-8">
+                                <label asp-for="FormFile" class="form-label"></label>
+                                <input asp-for="FormFile" class="form-control" type="file" id="formFile" />
+                                <span asp-validation-for="FormFile" class="error-danger"></span>
+                            </div>
+                            <small class="error-danger text-center">@Model.ErrorMessage</small>
+                            <small class="text-success text-center">@Model.SuccessMessage</small>
+
+                            <div class="form-group col-8 text-center">
+                                <input type="submit" value="Upload Picture" class="btn btn-primary" />
+                            </div>
+
+                        </div>
+
+
+                    </form>
+                </div>
+            </div>
+
+            <div class="text-center pb-5">
+                <a asp-controller="Profile" asp-action="Index" asp-route-id="@User.FindFirst("UserId").Value">Back to Profile</a>
+
+            </div>
+
+    </div>
+</section>
+
+
+
+
+    </div>
+</section>
+
+<partial name="_FooterPartial" />
+
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}

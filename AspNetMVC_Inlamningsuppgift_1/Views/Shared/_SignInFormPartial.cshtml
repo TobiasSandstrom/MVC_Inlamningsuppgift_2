@@ -1,0 +1,37 @@
+﻿@model AspNetMVC_Inlamningsuppgift_2.Models.SignInModel
+
+<section id="signIn">
+    <div id="signIn-bg">
+
+        <form class="m-5" asp-action="SignIn">  
+
+            <div id="signIn-text">
+                <h2>Sign in</h2>
+                <span>Enter your data below to sign in. Not a member? Register <a asp-controller="Authentication" asp-action="register">here</a></></span>
+            </div>
+            
+            <div id="signIn-form" class="row g2 col-10 align-items-center">
+
+                <div id="form-div" class="form-floating mb-3 col-12">
+                    <input asp-for="Email" type="text" class="form-control form-design" id="floatingEmail" placeholder="Email">
+                    <label asp-for="Email" class="form-placeholder" for="floatingEmail">Email</label>
+                    <span asp-validation-for="Email" class="error"></span>
+                </div>
+
+                <div id="form-div" class="form-floating mb-3 col-12">
+                    <input asp-for="Password" type="password" class="form-control form-design" id="floatingPassword" placeholder="Password">
+                    <label asp-for="Password" class="form-placeholder" for="floatingPassword">Password</label>
+                    <span asp-validation-for="Password" class="error"></span>
+                </div>
+
+                <div class="form-text text-center error">
+                    @Model.ErrorMessage 
+                </div>
+
+                <div id="btn-container">
+                    <button type="submit" id="signIn-btn" class="btn btn-primary col-12">Sign In</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

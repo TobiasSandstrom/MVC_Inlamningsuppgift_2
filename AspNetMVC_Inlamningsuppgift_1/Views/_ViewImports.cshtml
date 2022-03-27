@@ -1,0 +1,13 @@
+﻿@using AspNetMVC_Inlamningsuppgift_1
+@using AspNetMVC_Inlamningsuppgift_2
+@using AspNetMVC_Inlamningsuppgift_1.Models
+@using AspNetMVC_Inlamningsuppgift_2.Models
+@using AspNetMVC_Inlamningsuppgift_2.Managers
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> IdentityUser 
+@inject IUserProfileManager UserProfileManager
+
+
+@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers

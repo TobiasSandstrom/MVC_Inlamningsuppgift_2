@@ -1,0 +1,80 @@
+﻿@model AspNetMVC_Inlamningsuppgift_2.Models.RegisterModel
+
+<section id="register">
+    <div id="register-bg">
+
+        <form class="m-5" asp-action="Register">  
+
+            <div id="register-text">
+                <h2>Register</h2>
+                <span>Enter your data below to register. Already a member? Sign in <a asp-controller="Authentication" asp-action="signIn">here</a></></span>
+            </div>
+            
+            <div id="register-form" class="row g2 col-10 align-items-center">
+                
+                <div id="form-div" class="form-floating mb-3 col-6">
+                    <input asp-for="FirstName" type="text" class="form-control form-design" id="floatingFirstName" placeholder="First Name">
+                    <label asp-for="FirstName" class="form-placeholder" for="floatingFirstName">First Name</label>
+                    <span asp-validation-for="FirstName" class="error"></span>
+
+                </div>
+
+                <div id="form-div" class="form-floating mb-3 col-6">
+                    <input asp-for="LastName" type="text" class="form-control form-design" id="floatingLastName" placeholder="Last Name">
+                    <label asp-for="LastName" class="form-placeholder" for="floatingLastName">Last Name</label>
+                    <span asp-validation-for="LastName" class="error"></span>
+                </div>
+
+                <div id="form-div" class="form-floating mb-5 col-12">
+                    <input asp-for="Email" type="text" class="form-control form-design" id="floatingEmail" placeholder="Email">
+                    <label asp-for="Email" class="form-placeholder" for="floatingEmail">Email</label>
+                    <span asp-validation-for="Email" class="error"></span>
+                </div>
+
+                <div id="form-div" class="form-floating mt-2 mb-3 col-12">
+                    <input asp-for="Street" type="text" class="form-control form-design" id="floatingStreet" placeholder="Street Adress">
+                    <label asp-for="Street" class="form-placeholder" for="floatingStreet">Street Address</label>
+                    <span asp-validation-for="Street" class="error"></span>
+                </div>
+
+                <div id="form-div" class="form-floating mt-2 mb-3 col-6">
+                    <input asp-for="Zipcode" type="text" class="form-control form-design" id="floatingZipcode" placeholder="Zipcode">
+                    <label asp-for="Zipcode" class="form-placeholder" for="floatingZipcode">Zipcode</label>
+                    <span asp-validation-for="Zipcode" class="error"></span>
+                </div>
+
+                <div id="form-div" class="form-floating mb-3 col-6">
+                    <input asp-for="City" type="text" class="form-control form-design" id="floatingCity" placeholder="City">
+                    <label asp-for="City" class="form-placeholder" for="floatingCity">City</label>
+                    <span asp-validation-for="City" class="error"></span>
+                </div>
+
+                <div id="form-div" class="form-floating mb-5 col-12">
+                    <input asp-for="Country" type="text" class="form-control form-design" id="floatingCountry" placeholder="Country">
+                    <label asp-for="Country" class="form-placeholder" for="floatingCountry">Country</label>
+                    <span asp-validation-for="Country" class="error"></span>
+                </div>
+
+                <div id="form-div" class="form-floating mt-2 mb-3 col-6">
+                    <input asp-for="Password" type="password" class="form-control form-design" id="floatingPassword" placeholder="Password">
+                    <label asp-for="Password" class="form-placeholder" for="floatingPassword">Password</label>
+                    <span asp-validation-for="Password" class="error"></span>
+                </div>
+
+                <div id="form-div" class="form-floating mt-2 mb-3 col-6">
+                    <input asp-for="ConfirmPassword" type="password" class="form-control form-design" id="floatingConfirmPassword" placeholder="Confirm Password">
+                    <label asp-for="ConfirmPassword" class="form-placeholder" for="floatingConfirmPassword">Confirm Password</label>
+                    <span asp-validation-for="ConfirmPassword" class="error"></span>
+                </div>
+
+                <div class="form-text text-center error">
+                    @Model.ErrorMessage 
+                </div>
+
+                <div id="btn-container">
+                    <button type="submit" id="register-btn" class="btn btn-primary col-12">Register</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>

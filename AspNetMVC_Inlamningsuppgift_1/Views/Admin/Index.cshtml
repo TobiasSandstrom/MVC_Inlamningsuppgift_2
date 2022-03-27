@@ -1,0 +1,53 @@
+﻿<section id="header-background">
+    <div class="container">
+        <!-- Navbar Section-->
+        <partial name="_NavbarPartial" />
+
+        <section id="adminpage">
+
+            <div class="d-flex justify-content-between">
+
+                <div>
+
+                    <h2>
+                        <a asp-controller="Admin" asp-action="Users">Handle Users</a>
+                    </h2>
+
+                </div>
+
+                <div>
+
+                    <h2>
+                        <a  asp-controller="Admin" asp-action="editroles">Handle Roles</a>
+                    </h2>
+
+                </div>
+            </div>
+
+    </div>
+</section>
+
+<partial name="_FooterPartial" />
+
+
+@section Scripts {
+    @{
+    await Html.RenderPartialAsync("_ValidationScriptsPartial");
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</section>

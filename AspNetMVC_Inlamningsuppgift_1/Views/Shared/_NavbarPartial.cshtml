@@ -1,0 +1,46 @@
+﻿<div id="navbar">
+    <div id="navbar-logo">
+        <h1>OmniVus.</h1>
+        <p>IT Service & Technology</p>
+    </div>
+
+    <div id="navbar-top">
+        @if (SignInManager.IsSignedIn(User))
+        {
+            <a asp-controller="Profile" asp-action="Index" asp-route-id="@User.FindFirst("UserId").Value">@await UserProfileManager.DisplayNameAsync(User.FindFirst("UserId").Value)</a>
+            
+                @if (User.IsInRole("admin"))
+                {
+                    <a asp-controller="Admin" asp-action="index"><i>Administrate page</i></a>
+                }
+
+            
+            <div class="social">
+                <a asp-controller="Authentication" asp-action="Signout"><i>Sign Out</i></a>
+            </div>
+
+        }
+        else
+        {
+            <a href="mailto:info@domain.com">info@domain.com</a>
+            <div class="social">
+                <a href="https://facebook.com"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://twitter.com"><i class="fa-brands fa-twitter"></i></a>
+                <a href="https://linkedin.com"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://youtube.com"><i class="fa-brands fa-youtube"></i></a>
+            </div>
+        }
+    </div>
+
+    <div id="navbar-bottom">
+        <div class="menu-items">
+            <a asp-controller="Home" asp-action="Index">Home</a>
+            <a asp-controller="Home" asp-action="Service">Services</a>
+            <a asp-controller="Home" asp-action="Contact">Contact</a>
+        </div>
+        @if(!SignInManager.IsSignedIn(User))
+        { <a asp-controller="Authentication" asp-action="Signin" class="btn btn-main">Sign In</a> }
+
+    </div>
+
+</div>

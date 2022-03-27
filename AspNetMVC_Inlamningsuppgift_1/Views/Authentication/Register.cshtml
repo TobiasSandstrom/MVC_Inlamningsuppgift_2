@@ -1,0 +1,27 @@
+﻿@model AspNetMVC_Inlamningsuppgift_2.Models.RegisterModel
+
+@{
+    ViewData["Title"] = "Register";
+}
+
+
+
+<section id="header-background">
+    <div class="container">
+        <!-- Navbar Section-->
+        <partial name= "_NavbarPartial" /> 
+    </div>
+</section>
+
+
+<!-- Register Form Section-->
+<partial name= "_RegisterFormPartial" />  
+
+    <!-- Footer -->
+<partial name= "_FooterPartial" />   
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

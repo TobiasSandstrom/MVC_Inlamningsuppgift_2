@@ -1,0 +1,46 @@
+﻿@model MeetingModel
+
+<section id="meeting">
+    <div id="meeting-bg">
+        <div id="meeting-container">    
+            <div id="meeting-text">
+                <h2>Book a Meeting</h2>
+                <span>Does any industry face a more complex audience journey and<br> 
+                    marketing sales process than B2B technology.</span>
+            </div>
+        </div>
+
+        <form asp-action="Index">  
+            <div id="meeting-form" class="row g2">
+                <div id="form-name" class="form-floating mb-3 col-6">
+                    <input asp-for="CustomerName" type="text" class="form-control form-design" id="floatingName" placeholder="Enter your name">
+                    <label asp-for="CustomerName" class="form-placeholder" for="floatingName">Enter your name</label>
+                    <span asp-validation-for="CustomerName" class="error"></span>
+
+                </div>
+
+                <div id="form-email" class="form-floating col-6">
+                    <input asp-for="CustomerEmail" type="text" class="form-control form-design" id="floatingEmail" placeholder="Enter your email">
+                    <label class="form-placeholder" for="floatingEmail">Enter your email</label>
+                    <span asp-validation-for="CustomerEmail" class="error"></span>
+
+                </div>
+
+                <div id="form-text" class="mt-3">
+                    <textarea asp-for="CustomerMessage" class="form-control form-design" id="floatingText" rows="8" placeholder="Enter your questions & subject here."></textarea>
+                    <span asp-validation-for="CustomerMessage" class="error error-text"></span>
+                </div>
+
+                <div id="btn-container">
+                    <button type="submit" id="meeting-btn" class="btn btn-primary">Book a Meeting Now</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

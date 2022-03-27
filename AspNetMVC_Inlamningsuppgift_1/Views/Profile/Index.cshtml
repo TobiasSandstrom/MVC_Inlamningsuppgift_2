@@ -1,0 +1,72 @@
+﻿@model AspNetMVC_Inlamningsuppgift_2.Models.UserProfileViewModel
+
+<section id="header-background">
+    <div class="container">
+
+        <!-- Navbar Section-->
+        <partial name="_NavbarPartial" />
+       
+
+        <section id="profile-page">
+            <div class="container">
+                <div id="profile-container" class="d-flex justify-content-between">
+                    <div class="profileImg-container">
+                            @if (Model.ProfilePicture != "")
+                            {
+                                <img src="@("~/images/1_Profile_Images/"+Model.ProfilePicture)" asp-append-version="true" height="150" width="150" style="border-radius: 50%"  />
+                                 <div>
+                                    <div class="profileInfo-container">
+                                        <label>@Model.PageRole</label>
+                                        <h4>@Model.FullName</h4>
+                                   </div>
+                                </div> 
+                                <small class="d-block">Want to change you profile picture? <a asp-controller="Profile" asp-action="UploadPicture">Click here to do it!</a></small>
+                            }
+                            else
+                            {
+                                <img src="@("~/images/1_Profile_Images/1_standard-profile.png")" asp-append-version="true" height="150" width="150" style="border-radius: 50%"  />
+                                 <div>
+                                    <div class="profileInfo-container">
+                                        <label>@Model.PageRole</label>
+                                       <h4>@Model.FullName</h4>
+                                   </div>
+                                </div>
+                                <small class="d-block">Havent uploaded any profile picture yet? <a asp-controller="Profile" asp-action="UploadPicture">Click here!</a></small>
+                            }
+
+                                          
+                    </div>
+
+                    <div>
+                       
+                   
+                       <div class="profileInfo-container border">
+                           <span>Email</span>
+                           <h4>@Model.Email</h4>
+                       </div>
+                       <div class="profileInfo-container border">
+                           <span>Street Address</span>
+                           <h4>@Model.Street, @Model.Zipcode @Model.City</h4>
+                       </div>
+                       
+                       
+                       <div class="profileInfo-container border">
+                           <span>Country</span>
+                           <h4>@Model.Country</h4>
+                       </div>
+                        
+                        <div class="mt-2">
+                            <small>Information not correct? <a asp-controller="Profile" asp-action="EditProfile" asp-route-id="@User.FindFirst("UserId").Value">Click here!</a></small>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+    </div>
+</section>
+
+
+<!--Footer Section-->
+<partial name="_FooterPartial" />

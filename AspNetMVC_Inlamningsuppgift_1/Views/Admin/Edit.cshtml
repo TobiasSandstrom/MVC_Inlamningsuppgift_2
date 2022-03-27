@@ -1,0 +1,80 @@
+﻿@model AspNetMVC_Inlamningsuppgift_1.Models.AdminEditViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+<div class="container">
+<h1 style="padding-top:50px;" class="text-center">Edit user</h1>
+
+<h4 class="text-center" >Enter the changes below and save to make the changes</h4>
+<hr />
+<div class="row justify-content-center">
+    <div class="row col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Street" class="control-label"></label>
+                <input asp-for="Street" class="form-control" />
+                <span asp-validation-for="Street" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Zipcode" class="control-label"></label>
+                <input asp-for="Zipcode" class="form-control" />
+                <span asp-validation-for="Zipcode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="City" class="control-label"></label>
+                <input asp-for="City" class="form-control" />
+                <span asp-validation-for="City" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Country" class="control-label"></label>
+                <input asp-for="Country" class="form-control" />
+                <span asp-validation-for="Country" class="text-danger"></span>
+            </div>
+
+@*                <div class="form-group mt-3">
+                    <label asp-for="PageRole" class="control-label"></label>
+                        <select asp-for="PageRole" class="form-control" >
+                       
+                            @foreach (var r in Model.AllRoles)
+                            {
+                                <option>@r.Name</option>
+                            }
+                            <span asp-validation-for="PageRole" class="text-danger"></span>
+                        </select>
+                </input>
+                </div>*@
+
+            <small>@Model.Response</small>
+            <div class="form-group d-flex justify-content-center">
+                <input type="submit" value="Save" class="btn btn-primary col-8 mt-3" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div style="margin-bottom:100px;" class="text-center">
+    <a asp-controller="Admin" asp-action="Users">Go Back</a>
+</div>
+
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,56 @@
+﻿@model MeetingModel
+
+
+<section id="estimates">
+
+    <div id="estimates-container">
+
+        <div id="estimates-text">
+
+            <div class="d-flex">
+                <span class="estimates-span">Get in Touch</span>
+                <hr/>
+            </div>
+                
+            <h2>Estimate for your projects.</h2>
+
+            <form asp-action="Contact">
+                <div id="estimates-form" class="row g2">
+                    <div id="form-name" class="form-floating mb-3 col-12">
+                        <input asp-for="CustomerName" type="text" class="form-control form-design" id="floatingName" placeholder="Enter your name">
+                        <label class="form-placeholder" for="floatingName">Enter your name</label>
+                        <span asp-validation-for="CustomerName" class="error"></span>
+
+                    </div>
+        
+                    <div id="form-email" class="form-floating col-12">
+                        <input asp-for="CustomerEmail" type="text" class="form-control form-design" id="floatingEmail" placeholder="Enter your email">
+                        <label class="form-placeholder" for="floatingEmail">Enter your email</label>
+                        <span asp-validation-for="CustomerEmail" class="error"></span>
+                    </div>
+        
+                    <div id="form-text" class="mt-3">
+                        <textarea asp-for="CustomerMessage" class="form-control form-design" id="floatingText" rows="8" placeholder="Enter your message"></textarea>
+                        <span asp-validation-for="CustomerMessage" class="error text-error"></span>
+                    </div>
+                    <div id="btn-container">
+                        <button type="submit" id="meeting-btn" class="btn btn-primary mt-3">Submit Now</button>
+                    </div>
+                </div>
+            </form>
+
+                
+        </div>
+
+        <div id="estimates-showcase">
+            <img src="@Url.Content("~/images/estimates-showcase.png")" alt="">
+        </div>
+
+    </div>
+</section>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

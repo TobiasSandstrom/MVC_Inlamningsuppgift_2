@@ -1,0 +1,24 @@
+﻿@model AspNetMVC_Inlamningsuppgift_1.Models.AdminResponse
+
+
+
+
+<div style="padding-top:200px;" class="container">
+
+    <h3 class="text-center">
+        @Model.Response
+    </h3>
+    
+    <h4 class="text-center">
+        Go back to:
+        
+    </h4>
+    <div style="width:800px; margin:auto; padding-top: 100px;"  class="d-flex justify-content-between">
+
+        <h4><a asp-controller="Admin" asp-action="Users">Handle Users</a></h4>       
+        <h4><a asp-controller="Admin" asp-action="Roles">Handle Roles</a></h4>
+    </div>
+    
+    
+
+</div>
